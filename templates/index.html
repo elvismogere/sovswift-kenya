@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SovSwift Kenya – Digital Sovereignty &amp; Foreign Policy</title>
-    <meta name="description" content="SovSwift: Kenya's framework for digital sovereignty and foreign policy renaissance. A project of the Democracy for the Citizens Party (DCP).">
+    <title>SovSwift – DCP Foreign Policy Vision for Kenya</title>
+    <meta name="description" content="SovSwift: Democracy for the Citizens Party's vision for Kenya's digital sovereignty and foreign policy renaissance. Justice, Unity and Progress.">
     <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇰🇪</text></svg>">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,15 +21,14 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-brand">
-            <!-- Kenyan Flag SVG -->
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="SovSwift Logo" style="height: 30px; margin-right: 8px;">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600'%3E%3Crect width='900' height='600' fill='%23000'/%3E%3Crect width='900' height='200' fill='%23B71C1C'/%3E%3Crect width='900' height='200' y='400' fill='%231a4d2e'/%3E%3Crect width='900' height='200' y='200' fill='%23fff'/%3E%3Cpath d='M450 50 L450 550' stroke='%23B71C1C' stroke-width='20'/%3E%3C/svg%3E" alt="Kenyan Flag" style="height: 25px; margin-right: 8px;">
             <span class="brand-name">SovSwift</span>
-            <span style="color: #b71c1c; font-weight: 800; letter-spacing: 2px; margin-left: 10px; font-size: 1rem;">KENYA</span>
+            <span style="color: #b71c1c; font-weight: 800; letter-spacing: 2px; margin-left: 10px; font-size: 1rem;">DCP</span>
         </div>
         <ul class="nav-links" id="nav-links">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#blog">News</a></li>
+            <li><a href="#policy">Policy</a></li>
             <li><a href="#pillars">Pillars</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -44,17 +43,19 @@
         <section id="home" class="section hero">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>SovSwift</h1>
-                    <p class="subtitle">Kenya's Digital Sovereignty &amp; Foreign Policy Renaissance</p>
+                    <h1 style="color: #b71c1c;">SovSwift</h1>
+                    <p class="subtitle" style="color: #1a4d2e;">Kenya's Foreign Policy Renaissance</p>
                     <div class="hero-description">
-                        <p>A comprehensive framework for the 4<sup>th</sup> Industrial Revolution – citizen‑centric, technologically advanced, and globally competitive.</p>
+                        <p><strong style="color: #b71c1c;">"JUSTICE, UNITY AND PROGRESS"</strong></p>
+                        <p style="font-size: 1.5rem; font-weight: 700; color: #1a4d2e;">SKIZA WAKENYA</p>
+                        <p>A comprehensive framework for Kenya's digital sovereignty, citizen-centric diplomacy, and global leadership. A project of the <strong>Democracy for the Citizens Party (DCP)</strong>.</p>
                     </div>
                     <div class="hero-actions">
-                        <a href="#blog" class="btn btn-primary">Latest News</a>
-                        <a href="#contact" class="btn btn-secondary">Get Involved</a>
+                        <a href="#policy" class="btn btn-primary">Our Policy Vision</a>
+                        <a href="#contact" class="btn btn-secondary">Join the Movement</a>
                     </div>
                     <div class="countdown-container">
-                        <p class="countdown-label">General Elections 2027</p>
+                        <p class="countdown-label">General Elections 2027 – Kenya Decides</p>
                         <div id="countdown" class="countdown">
                             <span id="days">00</span>d
                             <span id="hours">00</span>h
@@ -64,7 +65,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a4d2e' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23b71c1c' opacity='0.8'/%3E%3Ctext x='120' y='170' font-size='40' fill='white' font-family='sans-serif'%3E🇰🇪%3C/text%3E%3C/svg%3E" alt="Kenya and SovSwift" class="hero-img">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a4d2e' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23b71c1c' opacity='0.8'/%3E%3Ctext x='90' y='170' font-size='50' fill='white' font-family='sans-serif'%3E🇰🇪 DCP%3C/text%3E%3C/svg%3E" alt="DCP Kenya" class="hero-img">
                 </div>
             </div>
         </section>
@@ -75,37 +76,67 @@
                 <h2>About SovSwift</h2>
                 <div class="about-grid">
                     <div class="about-text">
-                        <p><strong>SovSwift</strong> (Sovereignty + Swift) is a groundbreaking national project that reimagines Kenya's foreign policy for the Fourth Industrial Revolution. It bridges the gap between elite diplomacy and citizens' daily lives, ensuring Kenya becomes a digitally sovereign, economically prosperous, and globally respected nation.</p>
-                        <p>Grounded in the Constitution of Kenya and aligned with the Bottom‑Up Economic Transformation Agenda (BETA), SovSwift offers a practical roadmap for the next government to deliver tangible benefits to every Kenyan.</p>
-                        <p><i class="fas fa-flag"></i> A project of the <strong>Democracy for the Citizens Party (DCP)</strong>.</p>
-                        <p><strong>Total Visitors:</strong> <span id="visitor-count">{{ visitor_count }}</span></p>
+                        <p><strong>SovSwift</strong> (Sovereignty + Swift) is a groundbreaking initiative by the <strong>Democracy for the Citizens Party (DCP)</strong> to reimagine Kenya's foreign policy for the 4th Industrial Revolution.</p>
+                        <p>For 60+ years, Kenya's foreign policy has been conducted in a rarefied atmosphere – remote from the lived experiences of ordinary Kenyans. As the current government's own Prime Cabinet Secretary admitted, the policy appears <em>"alien to Kenyans."</em></p>
+                        <p><strong>DCP will change this.</strong> Our foreign policy will serve every Kenyan citizen, protect our digital sovereignty, and position Kenya as a global leader on our own terms.</p>
+                        <p><i class="fas fa-flag" style="color: #b71c1c;"></i> <strong>Democracy for the Citizens Party</strong> – <span style="color: #1a4d2e;">Justice, Unity and Progress</span></p>
+                        <p><i class="fas fa-bullhorn" style="color: #b71c1c;"></i> <strong style="color: #1a4d2e;">SKIZA WAKENYA</strong> – Kenya listens to its people</p>
                     </div>
                     <div class="about-stats">
                         <div class="stat-card">
                             <span class="stat-number">5</span>
-                            <span class="stat-label">Pillars</span>
+                            <span class="stat-label">Policy Pillars</span>
                         </div>
                         <div class="stat-card">
                             <span class="stat-number">2030</span>
-                            <span class="stat-label">Target Year</span>
+                            <span class="stat-label">Vision Target</span>
                         </div>
                         <div class="stat-card">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Citizen Focus</span>
+                            <span class="stat-number">47</span>
+                            <span class="stat-label">Counties Engaged</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- BLOG / NEWS Section -->
-        <section id="blog" class="section">
+        <!-- POLICY Section (Replaces Blog) -->
+        <section id="policy" class="section">
             <div class="container">
-                <h2>Latest News & Updates</h2>
-                <p class="section-intro">Stay informed about Kenya's journey to digital sovereignty.</p>
+                <h2>Our Policy Vision</h2>
+                <p class="section-intro">The DCP's alternative foreign policy framework for Kenya's future.</p>
+
+                <div style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; border-left: 6px solid #b71c1c;">
+                    <h3 style="color: #b71c1c;"><i class="fas fa-exclamation-triangle"></i> The Problem</h3>
+                    <p style="color: var(--text-secondary);">Kenya's foreign policy suffers from a legitimacy crisis, technological obsolescence, and disconnection from citizens. The current government's approach has been described as "alien to Kenyans" – erratic, inconsistent, and failing to serve the people.</p>
+                </div>
+
+                <div style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; border-left: 6px solid #1a4d2e;">
+                    <h3 style="color: #1a4d2e;"><i class="fas fa-lightbulb"></i> The DCP Solution</h3>
+                    <p style="color: var(--text-secondary);">A citizen-centered foreign policy grounded in Kenya's Constitution, serving all Kenyans, protecting our digital sovereignty, advancing economic prosperity, and positioning Kenya as a global leader on African terms.</p>
+                </div>
+
                 <div id="blog-posts" class="blog-grid">
-                    <!-- Posts are loaded dynamically via JavaScript from the API -->
-                    <p style="text-align:center; color:var(--text-secondary);">Loading news...</p>
+                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #b71c1c;">
+                        <h3 style="color: #b71c1c;"><i class="fas fa-users"></i> Citizen-Centric Diplomacy</h3>
+                        <p style="color: var(--text-secondary);">Foreign policy will no longer be conducted in isolation from citizens. Town halls in all 47 counties, translated policy documents, and diaspora engagement.</p>
+                    </div>
+                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #1a4d2e;">
+                        <h3 style="color: #1a4d2e;"><i class="fas fa-lock"></i> Digital Sovereignty</h3>
+                        <p style="color: var(--text-secondary);">Kenya must control its own digital destiny. Protect critical infrastructure, create cybersecurity jobs, and lead Africa in digital governance.</p>
+                    </div>
+                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #b71c1c;">
+                        <h3 style="color: #b71c1c;"><i class="fas fa-handshake"></i> Economic Sovereignty</h3>
+                        <p style="color: var(--text-secondary);">Trade agreements that benefit Kenyan workers and businesses. Reduce dependency on foreign aid and support Kenyan innovators.</p>
+                    </div>
+                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #1a4d2e;">
+                        <h3 style="color: #1a4d2e;"><i class="fas fa-globe-africa"></i> Pan-African Leadership</h3>
+                        <p style="color: var(--text-secondary);">Kenya as the voice of Africa in global affairs. Champion AU reforms and advocate for fair representation in international institutions.</p>
+                    </div>
+                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #b71c1c;">
+                        <h3 style="color: #b71c1c;"><i class="fas fa-gavel"></i> Constitutional Governance</h3>
+                        <p style="color: var(--text-secondary);">Foreign policy aligned with Kenya's Constitution. Uphold national values: patriotism, unity, rule of law, and human rights.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -113,33 +144,33 @@
         <!-- PILLARS Section -->
         <section id="pillars" class="section">
             <div class="container">
-                <h2>Five Pillars of SovSwift</h2>
-                <p class="section-intro">Each pillar is designed to transform Kenya's diplomatic and digital landscape.</p>
+                <h2>Five Pillars of DCP's Foreign Policy</h2>
+                <p class="section-intro">Built on Kenya's Constitution, serving all citizens, advancing our national interests.</p>
                 <div class="pillars-grid">
                     <div class="pillar-card">
-                        <i class="fas fa-lock pillar-icon"></i>
-                        <h3>Digital Sovereignty</h3>
-                        <p>Full control over Kenya's digital infrastructure, data, and cyber destiny by 2030.</p>
+                        <i class="fas fa-lock pillar-icon" style="color: #b71c1c;"></i>
+                        <h3 style="color: #1a4d2e;">Digital Sovereignty</h3>
+                        <p>Full control over Kenya's digital infrastructure, data, and cyber destiny – protecting our national interests.</p>
                     </div>
                     <div class="pillar-card">
-                        <i class="fas fa-users pillar-icon"></i>
-                        <h3>Citizen‑Centric Diplomacy</h3>
-                        <p>Foreign policy that serves every Kenyan – with grassroots engagement and diaspora integration.</p>
+                        <i class="fas fa-users pillar-icon" style="color: #b71c1c;"></i>
+                        <h3 style="color: #1a4d2e;">Citizen Diplomacy</h3>
+                        <p>Foreign policy that serves every Kenyan – with grassroots engagement, diaspora integration, and local voices.</p>
                     </div>
                     <div class="pillar-card">
-                        <i class="fas fa-chart-line pillar-icon"></i>
-                        <h3>Economic Transformation</h3>
-                        <p>Trade, investment, and technology transfer to create jobs and prosperity.</p>
+                        <i class="fas fa-chart-line pillar-icon" style="color: #b71c1c;"></i>
+                        <h3 style="color: #1a4d2e;">Economic Justice</h3>
+                        <p>Trade, investment, and technology transfer that benefits Kenyan workers, businesses, and communities.</p>
                     </div>
                     <div class="pillar-card">
-                        <i class="fas fa-shield-alt pillar-icon"></i>
-                        <h3>Cyber Resilience</h3>
-                        <p>Protecting citizens, businesses, and government from cyber threats.</p>
+                        <i class="fas fa-shield-alt pillar-icon" style="color: #b71c1c;"></i>
+                        <h3 style="color: #1a4d2e;">Cyber Resilience</h3>
+                        <p>Protecting citizens, businesses, and government from cyber threats – creating jobs and security for Kenyans.</p>
                     </div>
                     <div class="pillar-card">
-                        <i class="fas fa-globe-africa pillar-icon"></i>
-                        <h3>Global Leadership</h3>
-                        <p>Kenya as a primary architect of the global order – UNSC seat, AU reform, Nairobi hub.</p>
+                        <i class="fas fa-globe-africa pillar-icon" style="color: #b71c1c;"></i>
+                        <h3 style="color: #1a4d2e;">Global Leadership</h3>
+                        <p>Kenya as a primary architect of the global order – UNSC seat, AU reform, Nairobi as a global hub for the Global South.</p>
                     </div>
                 </div>
             </div>
@@ -148,8 +179,8 @@
         <!-- CONTACT Section -->
         <section id="contact" class="section">
             <div class="container">
-                <h2>Get Involved</h2>
-                <p class="section-intro">Join the movement. Let's build a sovereign, prosperous Kenya together.</p>
+                <h2>Join the Movement</h2>
+                <p class="section-intro">Be part of Kenya's foreign policy renaissance. Support the DCP vision for a sovereign, prosperous Kenya.</p>
                 <div class="contact-wrapper">
                     <form id="contact-form">
                         <div class="form-group">
@@ -161,16 +192,19 @@
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Share your ideas for Kenya's future..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
                         <div id="form-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
                     </form>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> dcpparty254@gmail.com</p>
-                        <p><i class="fas fa-phone"></i> +254 700 000 000</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                        <h3 style="color: #1a4d2e; margin-bottom: 1rem;">Contact DCP</h3>
+                        <p><i class="fas fa-envelope" style="color: #b71c1c;"></i> dcpparty254@gmail.com</p>
+                        <p><i class="fas fa-phone" style="color: #b71c1c;"></i> +254 700 000 000</p>
+                        <p><i class="fas fa-map-marker-alt" style="color: #b71c1c;"></i> Nairobi, Kenya</p>
+                        <p style="margin-top: 1rem;"><strong style="color: #1a4d2e;">JUSTICE, UNITY AND PROGRESS</strong></p>
+                        <p style="font-weight: 700; color: #b71c1c;">SKIZA WAKENYA</p>
                         <div class="social-links">
                             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                             <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
@@ -188,13 +222,13 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <span class="brand-icon">🇰🇪</span>
-                <span>SovSwift Kenya</span>
+                <span>SovSwift | DCP</span>
             </div>
-            <!-- Harambee Motto -->
-            <p class="footer-text"><i class="fas fa-handshake"></i> Harambee – Together We Build Kenya</p>
-            <p class="footer-text" style="font-size: 0.85rem; opacity: 0.8;">A project of the Democracy for the Citizens Party (DCP) – <span class="red-text">Justice, Unity &amp; Progress</span></p>
+            <p class="footer-text"><i class="fas fa-handshake"></i> Justice, Unity and Progress</p>
+            <p class="footer-text" style="font-size: 1.2rem; font-weight: 700; color: #b71c1c;">SKIZA WAKENYA</p>
+            <p class="footer-text" style="font-size: 0.85rem; opacity: 0.8;">Democracy for the Citizens Party – Building a Kenya that serves all its people</p>
             <div class="footer-legal">
-                <span>&copy; 2026 SovSwift. All rights reserved.</span>
+                <span>&copy; 2026 SovSwift. A project of the DCP.</span>
                 <span> | </span>
                 <span>Built with ❤️ for Kenya.</span>
             </div>
