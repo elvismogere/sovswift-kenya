@@ -40,19 +40,12 @@
 }
 
 /* ============================================
-   Hero Image – Clean SovSwift branding card
+   Hero Image – Clean branding card
    ============================================ */
 .hero-image {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.hero-img {
-    max-width: 85%;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* ============================================
@@ -65,5 +58,14 @@
     }
     .nav-toggle-btn {
         margin: 0 auto;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+    }
+
+    .hero-image {
+        margin-top: 2rem;
     }
 }
