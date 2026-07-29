@@ -2,8 +2,6 @@
 // Dark/Light Mode Toggle (Navbar)
 // ============================================
 const toggleBtn = document.getElementById('nav-mode-toggle');
-
-// Load saved theme
 const currentTheme = localStorage.getItem('theme') || 'light';
 
 if (currentTheme === 'dark') {
@@ -13,11 +11,9 @@ if (currentTheme === 'dark') {
     toggleBtn.innerHTML = '<i class="fas fa-moon"></i> Mode';
 }
 
-// Toggle function
 toggleBtn.addEventListener('click', function(e) {
     e.preventDefault();
     const theme = document.documentElement.getAttribute('data-theme');
-    
     if (theme === 'dark') {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
@@ -30,7 +26,7 @@ toggleBtn.addEventListener('click', function(e) {
 });
 
 // ============================================
-// Mobile Navigation Hamburger
+// Mobile Nav
 // ============================================
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
@@ -50,8 +46,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // ============================================
-// NAVIGATION: Smooth scrolling for "Home" button
-// Fix: Prevent page reload on Home click
+// SMOOTH SCROLL for nav links (FIXED Home button)
 // ============================================
 document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
@@ -67,34 +62,32 @@ document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
     });
 });
 
-// Also handle the "Home" button in the nav with data-nav attribute
-document.querySelectorAll('[data-nav]').forEach(link => {
+// Also handle any other anchor links (like buttons)
+document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (this.classList.contains('btn')) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
-        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
     });
 });
 
 // ============================================
-// Countdown to 2027-08-09
+// Countdown
 // ============================================
 const targetDate = new Date('2027-08-09T00:00:00').getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
     const distance = targetDate - now;
-
     if (distance < 0) {
         document.getElementById('countdown').innerHTML = 'Election Day!';
         return;
     }
-
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -110,28 +103,23 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ============================================
-// Fade-In Animation on Scroll (Intersection Observer)
+// Intersection Observer for Fade-In
 // ============================================
 const fadeElements = document.querySelectorAll('.fade-in');
-
 const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-            // Add a staggered delay for a cascading effect
             setTimeout(() => {
                 entry.target.classList.add('visible');
             }, index * 100);
         }
     });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-});
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 fadeElements.forEach(el => observer.observe(el));
 
 // ============================================
-// Active Navigation Link Highlighting (on scroll)
+// Active nav link on scroll
 // ============================================
 const sections = document.querySelectorAll('.section');
 const navLinksAll = document.querySelectorAll('.nav-links a');
@@ -144,7 +132,6 @@ function updateActiveLink() {
             current = section.getAttribute('id');
         }
     });
-
     navLinksAll.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
@@ -157,23 +144,19 @@ window.addEventListener('scroll', updateActiveLink);
 window.addEventListener('load', updateActiveLink);
 
 // ============================================
-// Load Blog Posts from API
+// Load blog posts (if any)
 // ============================================
 async function loadBlogPosts() {
     try {
         const response = await fetch('/api/posts');
         if (!response.ok) throw new Error('Failed to fetch posts');
         const posts = await response.json();
-        
         const blogContainer = document.getElementById('blog-posts');
-        
         if (!blogContainer) return;
-        
         if (posts.length === 0) {
             blogContainer.innerHTML = '<p style="text-align:center; color:var(--text-secondary);">No news yet. Check back soon!</p>';
             return;
         }
-
         let html = '<div class="blog-grid">';
         posts.forEach(post => {
             html += `
@@ -200,7 +183,7 @@ async function loadBlogPosts() {
 document.addEventListener('DOMContentLoaded', loadBlogPosts);
 
 // ============================================
-// Contact Form Submission (AJAX)
+// Contact Form
 // ============================================
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
@@ -209,13 +192,12 @@ if (contactForm) {
 
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const message = document.getElementById('message').value.trim();
 
         if (!name || !email || !message) {
-            formFeedback.innerHTML = '<span style="color:var(--accent-red);">Please fill in all fields.</span>';
+            formFeedback.innerHTML = '<span style="color:var(--accent-red);">All fields required.</span>';
             return;
         }
 
@@ -229,17 +211,15 @@ if (contactForm) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, message })
             });
-
             const data = await response.json();
-
             if (response.ok) {
-                formFeedback.innerHTML = '<span style="color:var(--accent-green);">✅ Message sent successfully! We will contact you soon.</span>';
+                formFeedback.innerHTML = '<span style="color:var(--accent-green);">✅ Message sent! We\'ll contact you soon.</span>';
                 contactForm.reset();
             } else {
-                formFeedback.innerHTML = `<span style="color:var(--accent-red);">❌ ${data.error || 'Something went wrong. Please try again.'}</span>`;
+                formFeedback.innerHTML = `<span style="color:var(--accent-red);">❌ ${data.error || 'Error. Try again.'}</span>`;
             }
         } catch (error) {
-            formFeedback.innerHTML = '<span style="color:var(--accent-red);">❌ Network error. Please check your connection.</span>';
+            formFeedback.innerHTML = '<span style="color:var(--accent-red);">❌ Network error. Check your connection.</span>';
         } finally {
             submitBtn.disabled = false;
             submitBtn.textContent = 'Send Message';
