@@ -37,12 +37,63 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     transition: background 0.3s, color 0.3s;
+    opacity: 0;
+    animation: fadeInBody 1s ease forwards;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+@keyframes fadeInBody {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   Fade-In Animations for Sections (Scroll)
+   ============================================ */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================
+   Smooth Hover Cards
+   ============================================ */
+.blog-card, .pillar-card, .stat-card, .problem-solution-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-card:hover, .pillar-card:hover, .stat-card:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+
+[data-theme="dark"] .blog-card:hover,
+[data-theme="dark"] .pillar-card:hover,
+[data-theme="dark"] .stat-card:hover {
+    box-shadow: 0 12px 35px rgba(255,255,255,0.06);
+}
+
+/* Hero buttons hover */
+.btn {
+    transition: transform 0.25s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* Countdown numbers slight pulse */
+.countdown span {
+    transition: transform 0.2s ease;
+}
+
+.countdown span:hover {
+    transform: scale(1.05);
 }
 
 /* ============================================
@@ -102,7 +153,7 @@ h2::after {
     top: 0;
     z-index: 999;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: background 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
     border-bottom: 2px solid var(--accent-green);
 }
 
@@ -115,13 +166,11 @@ h2::after {
     color: var(--accent-green);
 }
 
-/* NAVBAR SOVSWIFT - LIGHT MODE */
 .brand-name {
     color: var(--accent-green);
     transition: color 0.3s ease;
 }
 
-/* NAVBAR SOVSWIFT - DARK MODE */
 [data-theme="dark"] .brand-name {
     color: #ffffff !important;
 }
@@ -193,6 +242,7 @@ h2::after {
 .nav-mode-btn:hover {
     border-color: var(--accent-red);
     background: rgba(183, 28, 28, 0.05);
+    transform: scale(1.05);
 }
 
 .nav-mode-btn i {
@@ -246,7 +296,6 @@ h2::after {
     color: #b71c1c !important;
 }
 
-/* SUBTITLE - Light Mode */
 .subtitle {
     font-size: 1.6rem;
     font-weight: 600;
@@ -255,7 +304,6 @@ h2::after {
     transition: color 0.3s ease;
 }
 
-/* SUBTITLE - Dark Mode (White) */
 [data-theme="dark"] .subtitle {
     color: #ffffff !important;
 }
@@ -280,7 +328,7 @@ h2::after {
     border-radius: 50px;
     font-weight: 700;
     text-decoration: none;
-    transition: var(--transition);
+    transition: transform 0.25s ease, background 0.3s ease, box-shadow 0.3s ease;
     border: 2px solid transparent;
     cursor: pointer;
     font-size: 1rem;
@@ -294,7 +342,7 @@ h2::after {
 
 .btn-primary:hover {
     background: #a00000;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
     box-shadow: 0 8px 25px rgba(183, 28, 28, 0.4);
 }
 
@@ -307,7 +355,7 @@ h2::after {
 .btn-secondary:hover {
     background: var(--accent-green);
     color: white;
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
 }
 
 .hero-image {
@@ -317,7 +365,7 @@ h2::after {
 }
 
 /* ============================================
-   SLOGAN TEXT - Light Mode (Green)
+   SLOGAN TEXT
    ============================================ */
 .slogan-text {
     font-size: 1.5rem;
@@ -326,7 +374,6 @@ h2::after {
     transition: color 0.3s ease;
 }
 
-/* SLOGAN TEXT - Dark Mode (White) */
 [data-theme="dark"] .slogan-text {
     color: #ffffff !important;
 }
@@ -367,6 +414,11 @@ h2::after {
     min-width: 3rem;
     text-align: center;
     box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.countdown span:hover {
+    transform: scale(1.05);
 }
 
 [data-theme="dark"] .countdown span {
@@ -407,6 +459,12 @@ h2::after {
     text-align: center;
     box-shadow: var(--shadow);
     border-bottom: 4px solid var(--accent-green);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 .stat-number {
@@ -436,12 +494,12 @@ h2::after {
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     border-top: 4px solid var(--accent-red);
-    transition: var(--transition);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .blog-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
 .blog-card h3 {
@@ -470,13 +528,13 @@ h2::after {
     border-radius: var(--radius);
     text-align: center;
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-bottom: 4px solid var(--accent-red);
 }
 
 .pillar-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
 }
 
 .pillar-icon {
@@ -493,6 +551,18 @@ h2::after {
 .pillar-card p {
     color: var(--text-secondary);
     font-size: 0.95rem;
+}
+
+/* ============================================
+   Problem/Solution Cards
+   ============================================ */
+.problem-solution-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.problem-solution-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
 /* ============================================
