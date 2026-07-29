@@ -1,31 +1,31 @@
 // ============================================
-// Dark Mode Toggle
+// Dark/Light Mode Toggle (Footer)
 // ============================================
-const themeToggle = document.getElementById('theme-toggle');
+const toggleBtn = document.getElementById('footer-theme-toggle');
 const currentTheme = localStorage.getItem('theme') || 'light';
 
 if (currentTheme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    toggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
 } else {
-    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    toggleBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark Mode</span>';
 }
 
-themeToggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    if (current === 'dark') {
+toggleBtn.addEventListener('click', () => {
+    const theme = document.documentElement.getAttribute('data-theme');
+    if (theme === 'dark') {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        toggleBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark Mode</span>';
     } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        toggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
     }
 });
 
 // ============================================
-// Mobile Navigation
+// Mobile Navigation Hamburger
 // ============================================
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('nav-links');
@@ -99,7 +99,7 @@ window.addEventListener('scroll', updateActiveLink);
 window.addEventListener('load', updateActiveLink);
 
 // ============================================
-// DYNAMIC: Load Blog Posts from API
+// Load Blog Posts from API
 // ============================================
 async function loadBlogPosts() {
     try {
@@ -109,21 +109,22 @@ async function loadBlogPosts() {
         
         const blogContainer = document.getElementById('blog-posts');
         
+        if (!blogContainer) return; // safety check
+        
         if (posts.length === 0) {
             blogContainer.innerHTML = '<p style="text-align:center; color:var(--text-secondary);">No news yet. Check back soon!</p>';
             return;
         }
 
-        // Build the blog grid
-        let html = '<div class="blog-grid" style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2rem;">';
+        let html = '<div class="blog-grid">';
         posts.forEach(post => {
             html += `
-                <div class="blog-card" style="background:var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid var(--accent-red);">
-                    <h3 style="color:var(--accent-green);">${post.title}</h3>
-                    <p style="color:var(--text-secondary); font-size:0.85rem; margin:0.5rem 0;">
+                <div class="blog-card">
+                    <h3>${post.title}</h3>
+                    <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:0.5rem;">
                         <i class="fas fa-calendar-alt"></i> ${new Date(post.created_at).toLocaleDateString('en-KE')}
                     </p>
-                    <p style="color:var(--text-secondary);">${post.content.substring(0, 120)}...</p>
+                    <p>${post.content.substring(0, 120)}...</p>
                 </div>
             `;
         });
@@ -131,55 +132,59 @@ async function loadBlogPosts() {
         blogContainer.innerHTML = html;
     } catch (error) {
         console.error('Error loading blog posts:', error);
-        document.getElementById('blog-posts').innerHTML = '<p style="text-align:center; color:var(--accent-red);">Could not load news. Please refresh.</p>';
+        const blogContainer = document.getElementById('blog-posts');
+        if (blogContainer) {
+            blogContainer.innerHTML = '<p style="text-align:center; color:var(--accent-red);">Could not load news. Please refresh.</p>';
+        }
     }
 }
 
-// Load posts when page loads
 document.addEventListener('DOMContentLoaded', loadBlogPosts);
 
 // ============================================
-// DYNAMIC: Contact Form (Send to Backend API)
+// Contact Form Submission (AJAX)
 // ============================================
 const contactForm = document.getElementById('contact-form');
-const formFeedback = document.getElementById('form-feedback');
-const submitBtn = document.getElementById('submit-btn');
+if (contactForm) {
+    const formFeedback = document.getElementById('form-feedback');
+    const submitBtn = document.getElementById('submit-btn');
 
-contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
 
-    if (!name || !email || !message) {
-        formFeedback.innerHTML = '<span style="color:var(--accent-red);">Please fill in all fields.</span>';
-        return;
-    }
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
-    formFeedback.innerHTML = '';
-
-    try {
-        const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, message })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            formFeedback.innerHTML = '<span style="color:var(--accent-green);">✅ Message sent successfully! We will contact you soon.</span>';
-            contactForm.reset();
-        } else {
-            formFeedback.innerHTML = `<span style="color:var(--accent-red);">❌ ${data.error || 'Something went wrong. Please try again.'}</span>`;
+        if (!name || !email || !message) {
+            formFeedback.innerHTML = '<span style="color:var(--accent-red);">Please fill in all fields.</span>';
+            return;
         }
-    } catch (error) {
-        formFeedback.innerHTML = '<span style="color:var(--accent-red);">❌ Network error. Please check your connection.</span>';
-    } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
-    }
-});
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+        formFeedback.innerHTML = '';
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                formFeedback.innerHTML = '<span style="color:var(--accent-green);">✅ Message sent successfully! We will contact you soon.</span>';
+                contactForm.reset();
+            } else {
+                formFeedback.innerHTML = `<span style="color:var(--accent-red);">❌ ${data.error || 'Something went wrong. Please try again.'}</span>`;
+            }
+        } catch (error) {
+            formFeedback.innerHTML = '<span style="color:var(--accent-red);">❌ Network error. Please check your connection.</span>';
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+    });
+}
