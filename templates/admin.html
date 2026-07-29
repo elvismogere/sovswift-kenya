@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SovSwift Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .admin-container { max-width: 1200px; margin: 2rem auto; padding: 1.5rem; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent-red); padding-bottom: 1rem; margin-bottom: 2rem; }
+        .admin-header h1 { color: var(--accent-green); }
+        .logout-btn { background: var(--accent-red); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; }
+        .logout-btn:hover { opacity: 0.8; }
+        .post-form { background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .post-form input, .post-form textarea { width: 100%; padding: 0.8rem; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 1rem; font-family: 'Inter', sans-serif; }
+        .post-form button { background: var(--accent-green); color: white; border: none; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 700; cursor: pointer; }
+        .post-form button:hover { opacity: 0.9; }
+        .message-list, .post-list { background: var(--bg-secondary); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .message-item, .post-item { border-bottom: 1px solid #ddd; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center; }
+        .message-item:last-child, .post-item:last-child { border-bottom: none; }
+        .delete-btn { background: var(--accent-red); color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+        .delete-btn:hover { opacity: 0.8; }
+        .flash { padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+        .flash-success { background: #d4edda; color: #155724; }
+        .flash-error { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-lock"></i> SovSwift Admin</h1>
+            <a href="/admin/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+
+        <div class="post-form">
+            <h2>Create New Blog Post</h2>
+            <form method="POST" action="/admin/posts">
+                <input type="text" name="title" placeholder="Post Title" required>
+                <textarea name="content" rows="6" placeholder="Write your post content here..." required></textarea>
+                <button type="submit"><i class="fas fa-plus-circle"></i> Publish Post</button>
+            </form>
+        </div>
+
+        <div class="message-list">
+            <h2><i class="fas fa-envelope"></i> Contact Messages ({{ messages|length }})</h2>
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class="message-item">
+                        <div>
+                            <strong>{{ msg.name }}</strong> ({{ msg.email }})<br>
+                            <small>{{ msg.created_at[:10] }}</small>
+                            <p>{{ msg.message }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No messages yet.</p>
+            {% endif %}
+        </div>
+
+        <div class="post-list">
+            <h2><i class="fas fa-newspaper"></i> Published Posts ({{ posts|length }})</h2>
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="post-item">
+                        <div>
+                            <strong>{{ post.title }}</strong><br>
+                            <small>{{ post.created_at[:10] }}</small>
+                            <p>{{ post.content[:100] }}...</p>
+                        </div>
+                        <form method="POST" action="/admin/posts/delete/{{ post.id }}" style="margin:0;">
+                            <button type="submit" class="delete-btn" onclick="return confirm('Delete this post?');"><i class="fas fa-trash"></i> Delete</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No posts yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
