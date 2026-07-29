@@ -1,14 +1,14 @@
 // ============================================
-// Dark/Light Mode Toggle (Footer)
+// Dark/Light Mode Toggle (Navbar)
 // ============================================
-const toggleBtn = document.getElementById('footer-theme-toggle');
+const toggleBtn = document.getElementById('nav-mode-toggle');
 const currentTheme = localStorage.getItem('theme') || 'light';
 
 if (currentTheme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    toggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
+    toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Mode';
 } else {
-    toggleBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark Mode</span>';
+    toggleBtn.innerHTML = '<i class="fas fa-moon"></i> Mode';
 }
 
 toggleBtn.addEventListener('click', () => {
@@ -16,11 +16,11 @@ toggleBtn.addEventListener('click', () => {
     if (theme === 'dark') {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
-        toggleBtn.innerHTML = '<i class="fas fa-moon"></i> <span>Dark Mode</span>';
+        toggleBtn.innerHTML = '<i class="fas fa-moon"></i> Mode';
     } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        toggleBtn.innerHTML = '<i class="fas fa-sun"></i> <span>Light Mode</span>';
+        toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Mode';
     }
 });
 
@@ -109,7 +109,7 @@ async function loadBlogPosts() {
         
         const blogContainer = document.getElementById('blog-posts');
         
-        if (!blogContainer) return; // safety check
+        if (!blogContainer) return;
         
         if (posts.length === 0) {
             blogContainer.innerHTML = '<p style="text-align:center; color:var(--text-secondary);">No news yet. Check back soon!</p>';
