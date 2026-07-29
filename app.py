@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from flask import Flask, request, jsonify, render_template, redirect, url_for, session, flash
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session, flash, render_template_string
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from dotenv import load_dotenv
@@ -17,7 +17,7 @@ if database_url and database_url.startswith('postgres://'):
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url or 'sqlite:///sovswift.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key')
-app.config['ADMIN_PASSWORD'] = os.environ.get('ADMIN_PASSWORD', 'admin123')
+app.config['ADMIN_PASSWORD'] = os.environ.get('ADMIN_PASSWORD', 'DCP_Admin_2027_Kenya')
 
 db = SQLAlchemy(app)
 
@@ -93,54 +93,140 @@ def submit_contact():
         return jsonify({'error': 'Database error'}), 500
 
 # ============================================
-# ADMIN ROUTES
+# ADMIN ROUTES (FIXED)
 # ============================================
+
+ADMIN_LOGIN_TEMPLATE = '''
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login - SovSwift</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+        .login-box {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+        }
+        .login-box h1 {
+            color: #1a4d2e;
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+        .login-box .subtitle {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+        .login-box input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+        .login-box input:focus {
+            outline: none;
+            border-color: #1a4d2e;
+        }
+        .login-box button {
+            background: #1a4d2e;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: background 0.3s;
+        }
+        .login-box button:hover {
+            background: #0f3a22;
+        }
+        .flash-error {
+            color: #b71c1c;
+            background: #fde8e8;
+            padding: 0.6rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .flash-success {
+            color: #155724;
+            background: #d4edda;
+            padding: 0.6rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #1a4d2e;
+            margin-bottom: 0.5rem;
+        }
+        .footer-note {
+            margin-top: 1.5rem;
+            font-size: 0.7rem;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <div class="logo-icon"><i class="fas fa-lock"></i></div>
+        <h1>SovSwift</h1>
+        <p class="subtitle">Admin Access</p>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+        <form method="POST">
+            <input type="password" name="password" placeholder="Enter admin password" required autofocus>
+            <button type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+        </form>
+        <div class="footer-note">DCP • 2027</div>
+    </div>
+</body>
+</html>
+'''
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin_login():
     if session.get('logged_in'):
         return redirect(url_for('admin_dashboard'))
+    
     if request.method == 'POST':
         password = request.form.get('password')
         if password == app.config['ADMIN_PASSWORD']:
             session['logged_in'] = True
             return redirect(url_for('admin_dashboard'))
         else:
-            flash('Invalid password', 'error')
-    return '''
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Admin Login - SovSwift</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <style>
-            body { font-family: Inter, sans-serif; background: #f5f5f5; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-            .login-box { background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 350px; text-align: center; }
-            .login-box h1 { color: #1a4d2e; margin-bottom: 0.5rem; }
-            .login-box p { color: #666; margin-bottom: 1.5rem; }
-            .login-box input { width: 100%; padding: 0.8rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; margin-bottom: 1rem; box-sizing: border-box; }
-            .login-box button { background: #1a4d2e; color: white; border: none; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 700; cursor: pointer; width: 100%; font-size: 1rem; }
-            .login-box button:hover { opacity: 0.9; }
-            .flash-error { color: #b71c1c; margin-bottom: 1rem; }
-        </style>
-    </head>
-    <body>
-        <div class="login-box">
-            <h1><i class="fas fa-lock"></i> SovSwift</h1>
-            <p>Admin Access</p>
-            {% with messages = get_flashed_messages(with_categories=true) %}
-                {% for category, message in messages %}
-                    <div class="flash-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            {% endwith %}
-            <form method="POST">
-                <input type="password" name="password" placeholder="Enter admin password" required>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    </body>
-    </html>
-    '''
+            flash('Invalid password. Please try again.', 'error')
+    
+    return render_template_string(ADMIN_LOGIN_TEMPLATE)
 
 @app.route('/admin/dashboard')
 def admin_dashboard():
@@ -178,6 +264,7 @@ def delete_post(post_id):
 @app.route('/admin/logout')
 def admin_logout():
     session.clear()
+    flash('Logged out successfully.', 'success')
     return redirect(url_for('admin_login'))
 
 # ============================================
