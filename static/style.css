@@ -660,7 +660,7 @@ h2::after {
 }
 
 /* ============================================
-   WhatsApp Section – Two Column Grid
+   WhatsApp Section – Two Column Grid (Logo on Right)
    ============================================ */
 .whatsapp-grid {
     display: grid;
@@ -671,8 +671,42 @@ h2::after {
     margin: 0 auto;
 }
 
-/* Left Column: Clickable WhatsApp Logo */
-.whatsapp-left {
+/* Left Column: Text Content */
+.whatsapp-left h2 {
+    text-align: left !important;
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.whatsapp-left h2::after {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.whatsapp-left p {
+    color: var(--text-secondary);
+}
+
+.whatsapp-features {
+    margin-top: 0.5rem;
+}
+
+.whatsapp-features p {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+}
+
+.whatsapp-features i {
+    font-size: 0.95rem;
+    color: #25D366;
+}
+
+/* Right Column: Clickable WhatsApp Logo */
+.whatsapp-right {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -709,40 +743,6 @@ h2::after {
     font-weight: 700;
     letter-spacing: 0.5px;
     color: white;
-}
-
-/* Right Column: Text Content */
-.whatsapp-right h2 {
-    text-align: left !important;
-    font-size: 1.6rem;
-    margin-bottom: 0.5rem;
-}
-
-.whatsapp-right h2::after {
-    margin-left: 0;
-    margin-right: auto;
-}
-
-.whatsapp-right p {
-    color: var(--text-secondary);
-}
-
-.whatsapp-features {
-    margin-top: 0.5rem;
-}
-
-.whatsapp-features p {
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.95rem;
-}
-
-.whatsapp-features i {
-    font-size: 0.95rem;
-    color: #25D366;
 }
 
 /* ============================================
@@ -839,10 +839,10 @@ footer {
         gap: 1.5rem;
         text-align: center;
     }
-    .whatsapp-right h2 {
+    .whatsapp-left h2 {
         text-align: center !important;
     }
-    .whatsapp-right h2::after {
+    .whatsapp-left h2::after {
         margin: 0.4rem auto 0;
     }
     .whatsapp-features p {
