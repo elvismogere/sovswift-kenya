@@ -143,27 +143,45 @@
             </div>
         </section>
 
-        <!-- CONTACT Section – Clean -->
-        <section id="contact" class="section fade-in">
-            <div class="container narrow">
-                <h2>Join the Movement</h2>
-                <p class="section-intro">Support DCP's vision for a sovereign, prosperous Kenya.</p>
-                <form id="contact-form" style="max-width: 500px; margin: 0 auto;">
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
+        <!-- CONTACT Section – Two Column Layout -->
+        <section id="contact" class="section fade-in" style="padding-top: 1rem;">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Left Column: Heading & Description -->
+                    <div class="contact-left">
+                        <h2 style="text-align: left; margin-bottom: 0.5rem;">Join Our DCP Team</h2>
+                        <p class="contact-subtitle">Support DCP's vision for a sovereign, prosperous Kenya.</p>
+                        <div class="contact-features">
+                            <p><i class="fas fa-check-circle" style="color: var(--accent-green);"></i> Contribute to Kenya's digital sovereignty</p>
+                            <p><i class="fas fa-check-circle" style="color: var(--accent-green);"></i> Help shape citizen-centric foreign policy</p>
+                            <p><i class="fas fa-check-circle" style="color: var(--accent-green);"></i> Be part of the 2027 change movement</p>
+                        </div>
+                        <div class="contact-quote">
+                            <p>"Justice, Unity and Progress"</p>
+                            <span>SKIZA WAKENYA</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
+
+                    <!-- Right Column: Form -->
+                    <div class="contact-right">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="3" placeholder="Your ideas for Kenya..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+                            <div id="form-feedback" style="margin-top:0.8rem; text-align:center;"></div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Your ideas for Kenya..." required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="submit-btn" style="width:100%;">Send Message</button>
-                    <div id="form-feedback" style="margin-top:1rem; text-align:center;"></div>
-                </form>
+                </div>
             </div>
         </section>
     </main>
