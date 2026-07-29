@@ -226,6 +226,28 @@ h2::after {
 }
 
 /* ============================================
+   Section Padding
+   ============================================ */
+.section {
+    padding: 2.5rem 0;
+    background: var(--bg-primary);
+    transition: background 0.3s;
+}
+
+.section:nth-child(even) {
+    background: var(--bg-secondary);
+}
+
+.section:first-of-type {
+    padding-top: 0.5rem;
+}
+
+#contact {
+    padding-top: 0.5rem;
+    padding-bottom: 2rem;
+}
+
+/* ============================================
    Hero Section
    ============================================ */
 .hero {
@@ -320,7 +342,6 @@ h2::after {
     color: white;
     transform: translateY(-3px) scale(1.02);
 }
-/* FIX: Dark mode "Join the Movement" button */
 [data-theme="dark"] .btn-secondary {
     color: #ffffff !important;
     border-color: #ffffff !important;
@@ -480,7 +501,7 @@ h2::after {
 }
 
 /* ============================================
-   Blog Grid (hidden if no posts)
+   Blog Grid
    ============================================ */
 .blog-grid {
     margin-top: 2rem;
@@ -521,7 +542,6 @@ h2::after {
     color: var(--text-secondary);
     font-size: 0.9rem;
 }
-/* Dark mode pillar text should be white */
 [data-theme="dark"] .pillar-card h3 {
     color: #ffffff !important;
 }
@@ -533,38 +553,110 @@ h2::after {
 }
 
 /* ============================================
-   Contact
+   Contact Grid – Compact Two Column
    ============================================ */
-.contact-wrapper {
-    max-width: 500px;
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    max-width: 950px;
     margin: 0 auto;
 }
-.form-group {
+
+.contact-left h2 {
+    text-align: left !important;
+    margin-bottom: 0.3rem;
+    font-size: 1.8rem;
+}
+
+.contact-left h2::after {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.contact-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
     margin-bottom: 1rem;
 }
-.form-group label {
+
+.contact-features p {
+    margin-bottom: 0.4rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+}
+
+.contact-features i {
+    font-size: 0.9rem;
+    color: var(--accent-green);
+}
+
+.contact-quote {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--bg-secondary);
+}
+
+.contact-quote p {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
+}
+
+.contact-quote span {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--accent-red);
+}
+
+.contact-right {
+    background: var(--bg-secondary);
+    padding: 1.25rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-right .form-group {
+    margin-bottom: 0.7rem;
+}
+
+.contact-right .form-group label {
+    font-size: 0.85rem;
     display: block;
     font-weight: 600;
     margin-bottom: 0.3rem;
     color: var(--text-secondary);
 }
-.form-group input,
-.form-group textarea {
+
+.contact-right .form-group input,
+.contact-right .form-group textarea {
     width: 100%;
-    padding: 0.7rem 1rem;
+    padding: 0.5rem 0.8rem;
     border: 2px solid #ddd;
     border-radius: var(--radius);
     font-family: 'Inter', sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     background: var(--bg-primary);
     color: var(--text-primary);
     transition: var(--transition);
 }
-.form-group input:focus,
-.form-group textarea:focus {
+
+.contact-right .form-group input:focus,
+.contact-right .form-group textarea:focus {
     outline: none;
     border-color: var(--accent-green);
     box-shadow: 0 0 0 3px rgba(26, 77, 46, 0.2);
+}
+
+.contact-right .btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+    width: 100%;
 }
 
 /* ============================================
@@ -636,6 +728,24 @@ footer {
     .countdown span { min-width: 2.5rem; }
     .hero-image { margin-top: 2rem; }
     .brand-card { max-width: 100%; }
+    .section { padding: 2rem 0; }
+    #contact { padding-top: 0.5rem; padding-bottom: 1.5rem; }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .contact-left h2 {
+        text-align: center !important;
+        font-size: 1.6rem;
+    }
+    .contact-left h2::after {
+        margin: 0.4rem auto 0;
+    }
+    .contact-subtitle { text-align: center; }
+    .contact-features p { justify-content: center; }
+    .contact-quote { text-align: center; }
+    .contact-right { padding: 1rem; }
 }
 
 @media (max-width: 480px) {
@@ -643,122 +753,11 @@ footer {
     .subtitle { font-size: 1.2rem; }
     .btn { padding: 0.6rem 1.5rem; font-size: 0.9rem; }
     .pillars-grid { grid-template-columns: 1fr; }
-}
-/* ============================================
-   Contact Grid – Two Column Layout
-   ============================================ */
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.contact-left {
-    padding-top: 0.5rem;
-}
-
-.contact-left h2 {
-    text-align: left !important;
-    margin-bottom: 0.3rem;
-}
-
-.contact-left h2::after {
-    margin-left: 0;
-    margin-right: auto;
-}
-
-.contact-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
-}
-
-.contact-features p {
-    margin-bottom: 0.6rem;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-}
-
-.contact-features i {
-    font-size: 1rem;
-    color: var(--accent-green);
-}
-
-.contact-quote {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 2px solid var(--bg-secondary);
-}
-
-.contact-quote p {
-    font-style: italic;
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.2rem;
-}
-
-.contact-quote span {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--accent-red);
-}
-
-.contact-right {
-    background: var(--bg-secondary);
-    padding: 2rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-}
-
-.contact-right .form-group:last-of-type {
-    margin-bottom: 0.5rem;
-}
-
-.contact-right .btn {
-    width: 100%;
-}
-
-/* ============================================
-   Responsive: Contact Grid
-   ============================================ */
-@media (max-width: 768px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .contact-left h2 {
-        text-align: center !important;
-    }
-
-    .contact-left h2::after {
-        margin: 0.5rem auto 0;
-    }
-
-    .contact-subtitle {
-        text-align: center;
-    }
-
-    .contact-features p {
-        justify-content: center;
-    }
-
-    .contact-quote {
-        text-align: center;
-    }
-
-    .contact-right {
-        padding: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .contact-right {
-        padding: 1rem;
+    .brand-card h2 { font-size: 2rem; }
+    .contact-right { padding: 0.8rem; }
+    .contact-right .form-group input,
+    .contact-right .form-group textarea {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
     }
 }
