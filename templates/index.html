@@ -15,16 +15,16 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-brand">
             <span class="brand-name" id="nav-brand-text">SovSwift</span>
             <span style="color: #b71c1c; font-weight: 800; letter-spacing: 2px; margin-left: 10px; font-size: 1rem;">KENYA</span>
         </div>
         <ul class="nav-links" id="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#policy">News</a></li>
-            <li><a href="#pillars">Pillars</a></li>
+            <li><a href="#home" class="active" data-nav="home">Home</a></li>
+            <li><a href="#about" data-nav="about">About</a></li>
+            <li><a href="#policy" data-nav="policy">News</a></li>
+            <li><a href="#pillars" data-nav="pillars">Pillars</a></li>
             <li>
                 <button id="nav-mode-toggle" class="nav-mode-btn" aria-label="Toggle dark mode">
                     <i class="fas fa-moon"></i> Mode
@@ -39,7 +39,7 @@
     <!-- Main Content -->
     <main>
         <!-- HOME Section -->
-        <section id="home" class="section hero">
+        <section id="home" class="section hero fade-in">
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 style="color: #b71c1c;">SovSwift</h1>
@@ -76,7 +76,7 @@
         </section>
 
         <!-- ABOUT Section -->
-        <section id="about" class="section">
+        <section id="about" class="section fade-in">
             <div class="container">
                 <h2>About SovSwift</h2>
                 <div class="about-grid">
@@ -106,17 +106,17 @@
         </section>
 
         <!-- POLICY Section -->
-        <section id="policy" class="section">
+        <section id="policy" class="section fade-in">
             <div class="container">
                 <h2>Our Policy Vision</h2>
                 <p class="section-intro">The DCP's alternative foreign policy framework for Kenya's future.</p>
 
-                <div style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; border-left: 6px solid #b71c1c;">
+                <div class="problem-solution-card" style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; border-left: 6px solid #b71c1c;">
                     <h3 style="color: #b71c1c;"><i class="fas fa-exclamation-triangle"></i> The Problem</h3>
                     <p style="color: var(--text-secondary);">Kenya's foreign policy suffers from a legitimacy crisis, technological obsolescence, and disconnection from citizens. The current government's approach has been described as "alien to Kenyans" – erratic, inconsistent, and failing to serve the people.</p>
                 </div>
 
-                <div style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; border-left: 6px solid #1a4d2e;">
+                <div class="problem-solution-card" style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; border-left: 6px solid #1a4d2e;">
                     <h3 style="color: #1a4d2e;"><i class="fas fa-lightbulb"></i> The DCP Solution</h3>
                     <p style="color: var(--text-secondary);">A citizen-centered foreign policy grounded in Kenya's Constitution, serving all Kenyans, protecting our digital sovereignty, advancing economic prosperity, and positioning Kenya as a global leader on African terms.</p>
                 </div>
@@ -147,7 +147,7 @@
         </section>
 
         <!-- PILLARS Section -->
-        <section id="pillars" class="section">
+        <section id="pillars" class="section fade-in">
             <div class="container">
                 <h2>Five Pillars of DCP's Foreign Policy</h2>
                 <p class="section-intro">Built on Kenya's Constitution, serving all citizens, advancing our national interests.</p>
@@ -182,7 +182,7 @@
         </section>
 
         <!-- CONTACT Section -->
-        <section id="contact" class="section">
+        <section id="contact" class="section fade-in">
             <div class="container">
                 <h2>Join the Movement</h2>
                 <p class="section-intro">Be part of Kenya's foreign policy renaissance. Support the DCP vision for a sovereign, prosperous Kenya.</p>
