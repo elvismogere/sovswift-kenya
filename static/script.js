@@ -46,38 +46,56 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // ============================================
-// SMOOTH SCROLL for nav links (FIXED Home button)
+// SMOOTH SCROLL with navbar offset (FIXED)
 // ============================================
+function smoothScrollTo(targetId) {
+    const targetElement = document.querySelector(targetId);
+    if (!targetElement) return;
+
+    // Calculate navbar height dynamically
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 80;
+
+    // Get the target's position relative to the document
+    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+
+    // Scroll to target minus navbar height + a small extra padding for comfort
+    const offsetPosition = targetPosition - navbarHeight - 10;
+
+    window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+    });
+
+    // Update active nav link
+    document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+    const activeLink = document.querySelector(`.nav-links a[href="${targetId}"]`);
+    if (activeLink) activeLink.classList.add('active');
+}
+
+// Handle all nav links
 document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        // Update active state
-        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-        this.classList.add('active');
+        smoothScrollTo(targetId);
     });
 });
 
-// Also handle any other anchor links (like buttons)
+// Handle all other anchor links (buttons like "Our Policy", "Join the Movement")
 document.querySelectorAll('a[href^="#"]').forEach(link => {
+    // Skip nav links already handled above
+    if (link.closest('.nav-links')) return;
+
     link.addEventListener('click', function(e) {
-        if (this.classList.contains('btn')) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        }
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        smoothScrollTo(targetId);
     });
 });
 
 // ============================================
-// Countdown
+// Countdown Timer
 // ============================================
 const targetDate = new Date('2027-08-09T00:00:00').getTime();
 
@@ -119,19 +137,23 @@ const observer = new IntersectionObserver((entries) => {
 fadeElements.forEach(el => observer.observe(el));
 
 // ============================================
-// Active nav link on scroll
+// Active nav link on scroll (with offset)
 // ============================================
 const sections = document.querySelectorAll('.section');
 const navLinksAll = document.querySelectorAll('.nav-links a');
 
 function updateActiveLink() {
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 80;
     let current = '';
+
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 150;
+        const sectionTop = section.offsetTop - navbarHeight - 20;
         if (window.scrollY >= sectionTop) {
             current = section.getAttribute('id');
         }
     });
+
     navLinksAll.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${current}`) {
