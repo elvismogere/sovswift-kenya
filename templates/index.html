@@ -13,23 +13,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Dark Mode Toggle -->
+    <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-brand">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600'%3E%3Crect width='900' height='600' fill='%23000'/%3E%3Crect width='900' height='200' fill='%23B71C1C'/%3E%3Crect width='900' height='200' y='400' fill='%231a4d2e'/%3E%3Crect width='900' height='200' y='200' fill='%23fff'/%3E%3Cpath d='M450 50 L450 550' stroke='%23B71C1C' stroke-width='20'/%3E%3C/svg%3E" alt="Kenyan Flag" style="height: 25px; margin-right: 8px;">
             <span class="brand-name">SovSwift</span>
-            <span style="color: #b71c1c; font-weight: 800; letter-spacing: 2px; margin-left: 10px; font-size: 1rem;">KENYA</span>
+            <span style="color: #b71c1c; font-weight: 800; letter-spacing: 2px; margin-left: 10px; font-size: 1rem;">DCP</span>
         </div>
         <ul class="nav-links" id="nav-links">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#policy">News</a></li>
+            <li><a href="#policy">Policy</a></li>
             <li><a href="#pillars">Pillars</a></li>
-            <li>
-                <button id="navbar-theme-toggle" class="nav-toggle-btn" aria-label="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
             <i class="fas fa-bars"></i>
@@ -64,12 +65,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <!-- Clean centered SovSwift branding – no flag, no red circle -->
-                    <div style="background: #1a4d2e; padding: 3rem 2rem; border-radius: 16px; text-align: center; box-shadow: 0 8px 30px rgba(0,0,0,0.15); min-width: 300px;">
-                        <h2 style="color: white; font-size: 3rem; margin: 0; font-weight: 800; letter-spacing: 2px;">SovSwift</h2>
-                        <p style="color: #8bc34a; font-size: 1.2rem; margin: 0.5rem 0 0 0; font-weight: 600;">Justice • Unity • Progress</p>
-                        <p style="color: #b71c1c; font-size: 1rem; margin: 0.5rem 0 0 0; font-weight: 700; letter-spacing: 1px;">SKIZA WAKENYA</p>
-                    </div>
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a4d2e' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23b71c1c' opacity='0.8'/%3E%3Ctext x='90' y='170' font-size='50' fill='white' font-family='sans-serif'%3E🇰🇪 DCP%3C/text%3E%3C/svg%3E" alt="DCP Kenya" class="hero-img">
                 </div>
             </div>
         </section>
@@ -104,7 +100,7 @@
             </div>
         </section>
 
-        <!-- POLICY Section -->
+        <!-- POLICY Section (Replaces Blog) -->
         <section id="policy" class="section">
             <div class="container">
                 <h2>Our Policy Vision</h2>
@@ -180,13 +176,13 @@
             </div>
         </section>
 
-        <!-- CONTACT Section (Clean – no ugly contact info) -->
+        <!-- CONTACT Section -->
         <section id="contact" class="section">
             <div class="container">
                 <h2>Join the Movement</h2>
                 <p class="section-intro">Be part of Kenya's foreign policy renaissance. Support the DCP vision for a sovereign, prosperous Kenya.</p>
                 <div class="contact-wrapper">
-                    <form id="contact-form" style="max-width: 600px; margin: 0 auto;">
+                    <form id="contact-form">
                         <div class="form-group">
                             <label for="name">Full Name</label>
                             <input type="text" id="name" name="name" required>
@@ -199,9 +195,23 @@
                             <label for="message">Your Message</label>
                             <textarea id="message" name="message" rows="5" placeholder="Share your ideas for Kenya's future..." required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;">Send Message</button>
-                        <div id="form-feedback" style="margin-top: 1rem; font-weight: 600; text-align: center;"></div>
+                        <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
+                        <div id="form-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
                     </form>
+                    <div class="contact-info">
+                        <h3 style="color: #1a4d2e; margin-bottom: 1rem;">Contact DCP</h3>
+                        <p><i class="fas fa-envelope" style="color: #b71c1c;"></i> dcpparty254@gmail.com</p>
+                        <p><i class="fas fa-phone" style="color: #b71c1c;"></i> +254 700 000 000</p>
+                        <p><i class="fas fa-map-marker-alt" style="color: #b71c1c;"></i> Nairobi, Kenya</p>
+                        <p style="margin-top: 1rem;"><strong style="color: #1a4d2e;">JUSTICE, UNITY AND PROGRESS</strong></p>
+                        <p style="font-weight: 700; color: #b71c1c;">SKIZA WAKENYA</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
