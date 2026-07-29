@@ -46,20 +46,15 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // ============================================
-// SMOOTH SCROLL with navbar offset (FIXED)
+// SMOOTH SCROLL with navbar offset
 // ============================================
 function smoothScrollTo(targetId) {
     const targetElement = document.querySelector(targetId);
     if (!targetElement) return;
 
-    // Calculate navbar height dynamically
     const navbar = document.querySelector('.navbar');
     const navbarHeight = navbar ? navbar.offsetHeight : 80;
-
-    // Get the target's position relative to the document
     const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-
-    // Scroll to target minus navbar height + a small extra padding for comfort
     const offsetPosition = targetPosition - navbarHeight - 10;
 
     window.scrollTo({
@@ -67,13 +62,11 @@ function smoothScrollTo(targetId) {
         behavior: 'smooth'
     });
 
-    // Update active nav link
     document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
     const activeLink = document.querySelector(`.nav-links a[href="${targetId}"]`);
     if (activeLink) activeLink.classList.add('active');
 }
 
-// Handle all nav links
 document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -82,11 +75,8 @@ document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
     });
 });
 
-// Handle all other anchor links (buttons like "Our Policy", "Join the Movement")
 document.querySelectorAll('a[href^="#"]').forEach(link => {
-    // Skip nav links already handled above
     if (link.closest('.nav-links')) return;
-
     link.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
@@ -137,7 +127,7 @@ const observer = new IntersectionObserver((entries) => {
 fadeElements.forEach(el => observer.observe(el));
 
 // ============================================
-// Active nav link on scroll (with offset)
+// Active nav link on scroll
 // ============================================
 const sections = document.querySelectorAll('.section');
 const navLinksAll = document.querySelectorAll('.nav-links a');
@@ -166,7 +156,7 @@ window.addEventListener('scroll', updateActiveLink);
 window.addEventListener('load', updateActiveLink);
 
 // ============================================
-// Load blog posts (if any)
+// Load blog posts
 // ============================================
 async function loadBlogPosts() {
     try {
