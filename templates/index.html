@@ -3,238 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SovSwift – DCP Foreign Policy Vision for Kenya</title>
-    <meta name="description" content="SovSwift: Democracy for the Citizens Party's vision for Kenya's digital sovereignty and foreign policy renaissance. Justice, Unity and Progress.">
-    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇰🇪</text></svg>">
+    <title>SovSwift Admin</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Quick admin-specific styles */
+        .admin-container { max-width: 1200px; margin: 2rem auto; padding: 1.5rem; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--accent-red); padding-bottom: 1rem; margin-bottom: 2rem; }
+        .admin-header h1 { color: var(--accent-green); }
+        .logout-btn { background: var(--accent-red); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; }
+        .logout-btn:hover { opacity: 0.8; }
+        .post-form { background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .post-form input, .post-form textarea { width: 100%; padding: 0.8rem; border: 2px solid #ddd; border-radius: 8px; margin-bottom: 1rem; font-family: 'Inter', sans-serif; }
+        .post-form button { background: var(--accent-green); color: white; border: none; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 700; cursor: pointer; }
+        .post-form button:hover { opacity: 0.9; }
+        .message-list, .post-list { background: var(--bg-secondary); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); margin-bottom: 2rem; }
+        .message-item, .post-item { border-bottom: 1px solid #ddd; padding: 1rem 0; display: flex; justify-content: space-between; align-items: center; }
+        .message-item:last-child, .post-item:last-child { border-bottom: none; }
+        .delete-btn { background: var(--accent-red); color: white; border: none; padding: 0.3rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+        .delete-btn:hover { opacity: 0.8; }
+        .flash { padding: 1rem; border-radius: 8px; margin-bottom: 1rem; }
+        .flash-success { background: #d4edda; color: #155724; }
+        .flash-error { background: #f8d7da; color: #721c24; }
+    </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">
-        <i class="fas fa-moon"></i>
-    </button>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600'%3E%3Crect width='900' height='600' fill='%23000'/%3E%3Crect width='900' height='200' fill='%23B71C1C'/%3E%3Crect width='900' height='200' y='400' fill='%231a4d2e'/%3E%3Crect width='900' height='200' y='200' fill='%23fff'/%3E%3Cpath d='M450 50 L450 550' stroke='%23B71C1C' stroke-width='20'/%3E%3C/svg%3E" alt="Kenyan Flag" style="height: 25px; margin-right: 8px;">
-            <span class="brand-name">SovSwift</span>
-            <span style="color: #b71c1c; font-weight: 800; letter-spacing: 2px; margin-left: 10px; font-size: 1rem;">DCP</span>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-lock"></i> SovSwift Admin</h1>
+            <a href="/admin/logout" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="#home" class="active">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#policy">Policy</a></li>
-            <li><a href="#pillars">Pillars</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-            <i class="fas fa-bars"></i>
-        </button>
-    </nav>
 
-    <!-- Main Content -->
-    <main>
-        <!-- HOME Section -->
-        <section id="home" class="section hero">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 style="color: #b71c1c;">SovSwift</h1>
-                    <p class="subtitle" style="color: #1a4d2e;">Kenya's Foreign Policy Renaissance</p>
-                    <div class="hero-description">
-                        <p><strong style="color: #b71c1c;">"JUSTICE, UNITY AND PROGRESS"</strong></p>
-                        <p style="font-size: 1.5rem; font-weight: 700; color: #1a4d2e;">SKIZA WAKENYA</p>
-                        <p>A comprehensive framework for Kenya's digital sovereignty, citizen-centric diplomacy, and global leadership. A project of the <strong>Democracy for the Citizens Party (DCP)</strong>.</p>
-                    </div>
-                    <div class="hero-actions">
-                        <a href="#policy" class="btn btn-primary">Our Policy Vision</a>
-                        <a href="#contact" class="btn btn-secondary">Join the Movement</a>
-                    </div>
-                    <div class="countdown-container">
-                        <p class="countdown-label">General Elections 2027 – Kenya Decides</p>
-                        <div id="countdown" class="countdown">
-                            <span id="days">00</span>d
-                            <span id="hours">00</span>h
-                            <span id="minutes">00</span>m
-                            <span id="seconds">00</span>s
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%231a4d2e' width='400' height='300'/%3E%3Ccircle cx='200' cy='150' r='80' fill='%23b71c1c' opacity='0.8'/%3E%3Ctext x='90' y='170' font-size='50' fill='white' font-family='sans-serif'%3E🇰🇪 DCP%3C/text%3E%3C/svg%3E" alt="DCP Kenya" class="hero-img">
-                </div>
-            </div>
-        </section>
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="flash flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
 
-        <!-- ABOUT Section -->
-        <section id="about" class="section">
-            <div class="container">
-                <h2>About SovSwift</h2>
-                <div class="about-grid">
-                    <div class="about-text">
-                        <p><strong>SovSwift</strong> (Sovereignty + Swift) is a groundbreaking initiative by the <strong>Democracy for the Citizens Party (DCP)</strong> to reimagine Kenya's foreign policy for the 4th Industrial Revolution.</p>
-                        <p>For 60+ years, Kenya's foreign policy has been conducted in a rarefied atmosphere – remote from the lived experiences of ordinary Kenyans. As the current government's own Prime Cabinet Secretary admitted, the policy appears <em>"alien to Kenyans."</em></p>
-                        <p><strong>DCP will change this.</strong> Our foreign policy will serve every Kenyan citizen, protect our digital sovereignty, and position Kenya as a global leader on our own terms.</p>
-                        <p><i class="fas fa-flag" style="color: #b71c1c;"></i> <strong>Democracy for the Citizens Party</strong> – <span style="color: #1a4d2e;">Justice, Unity and Progress</span></p>
-                        <p><i class="fas fa-bullhorn" style="color: #b71c1c;"></i> <strong style="color: #1a4d2e;">SKIZA WAKENYA</strong> – Kenya listens to its people</p>
-                    </div>
-                    <div class="about-stats">
-                        <div class="stat-card">
-                            <span class="stat-number">5</span>
-                            <span class="stat-label">Policy Pillars</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">2030</span>
-                            <span class="stat-label">Vision Target</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">47</span>
-                            <span class="stat-label">Counties Engaged</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- POLICY Section (Replaces Blog) -->
-        <section id="policy" class="section">
-            <div class="container">
-                <h2>Our Policy Vision</h2>
-                <p class="section-intro">The DCP's alternative foreign policy framework for Kenya's future.</p>
-
-                <div style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; border-left: 6px solid #b71c1c;">
-                    <h3 style="color: #b71c1c;"><i class="fas fa-exclamation-triangle"></i> The Problem</h3>
-                    <p style="color: var(--text-secondary);">Kenya's foreign policy suffers from a legitimacy crisis, technological obsolescence, and disconnection from citizens. The current government's approach has been described as "alien to Kenyans" – erratic, inconsistent, and failing to serve the people.</p>
-                </div>
-
-                <div style="background: var(--bg-secondary); padding: 2rem; border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 2rem; border-left: 6px solid #1a4d2e;">
-                    <h3 style="color: #1a4d2e;"><i class="fas fa-lightbulb"></i> The DCP Solution</h3>
-                    <p style="color: var(--text-secondary);">A citizen-centered foreign policy grounded in Kenya's Constitution, serving all Kenyans, protecting our digital sovereignty, advancing economic prosperity, and positioning Kenya as a global leader on African terms.</p>
-                </div>
-
-                <div id="blog-posts" class="blog-grid">
-                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #b71c1c;">
-                        <h3 style="color: #b71c1c;"><i class="fas fa-users"></i> Citizen-Centric Diplomacy</h3>
-                        <p style="color: var(--text-secondary);">Foreign policy will no longer be conducted in isolation from citizens. Town halls in all 47 counties, translated policy documents, and diaspora engagement.</p>
-                    </div>
-                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #1a4d2e;">
-                        <h3 style="color: #1a4d2e;"><i class="fas fa-lock"></i> Digital Sovereignty</h3>
-                        <p style="color: var(--text-secondary);">Kenya must control its own digital destiny. Protect critical infrastructure, create cybersecurity jobs, and lead Africa in digital governance.</p>
-                    </div>
-                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #b71c1c;">
-                        <h3 style="color: #b71c1c;"><i class="fas fa-handshake"></i> Economic Sovereignty</h3>
-                        <p style="color: var(--text-secondary);">Trade agreements that benefit Kenyan workers and businesses. Reduce dependency on foreign aid and support Kenyan innovators.</p>
-                    </div>
-                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #1a4d2e;">
-                        <h3 style="color: #1a4d2e;"><i class="fas fa-globe-africa"></i> Pan-African Leadership</h3>
-                        <p style="color: var(--text-secondary);">Kenya as the voice of Africa in global affairs. Champion AU reforms and advocate for fair representation in international institutions.</p>
-                    </div>
-                    <div class="blog-card" style="background: var(--bg-secondary); padding:1.5rem; border-radius:12px; box-shadow:var(--shadow); border-top:4px solid #b71c1c;">
-                        <h3 style="color: #b71c1c;"><i class="fas fa-gavel"></i> Constitutional Governance</h3>
-                        <p style="color: var(--text-secondary);">Foreign policy aligned with Kenya's Constitution. Uphold national values: patriotism, unity, rule of law, and human rights.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PILLARS Section -->
-        <section id="pillars" class="section">
-            <div class="container">
-                <h2>Five Pillars of DCP's Foreign Policy</h2>
-                <p class="section-intro">Built on Kenya's Constitution, serving all citizens, advancing our national interests.</p>
-                <div class="pillars-grid">
-                    <div class="pillar-card">
-                        <i class="fas fa-lock pillar-icon" style="color: #b71c1c;"></i>
-                        <h3 style="color: #1a4d2e;">Digital Sovereignty</h3>
-                        <p>Full control over Kenya's digital infrastructure, data, and cyber destiny – protecting our national interests.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <i class="fas fa-users pillar-icon" style="color: #b71c1c;"></i>
-                        <h3 style="color: #1a4d2e;">Citizen Diplomacy</h3>
-                        <p>Foreign policy that serves every Kenyan – with grassroots engagement, diaspora integration, and local voices.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <i class="fas fa-chart-line pillar-icon" style="color: #b71c1c;"></i>
-                        <h3 style="color: #1a4d2e;">Economic Justice</h3>
-                        <p>Trade, investment, and technology transfer that benefits Kenyan workers, businesses, and communities.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <i class="fas fa-shield-alt pillar-icon" style="color: #b71c1c;"></i>
-                        <h3 style="color: #1a4d2e;">Cyber Resilience</h3>
-                        <p>Protecting citizens, businesses, and government from cyber threats – creating jobs and security for Kenyans.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <i class="fas fa-globe-africa pillar-icon" style="color: #b71c1c;"></i>
-                        <h3 style="color: #1a4d2e;">Global Leadership</h3>
-                        <p>Kenya as a primary architect of the global order – UNSC seat, AU reform, Nairobi as a global hub for the Global South.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT Section -->
-        <section id="contact" class="section">
-            <div class="container">
-                <h2>Join the Movement</h2>
-                <p class="section-intro">Be part of Kenya's foreign policy renaissance. Support the DCP vision for a sovereign, prosperous Kenya.</p>
-                <div class="contact-wrapper">
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Share your ideas for Kenya's future..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
-                        <div id="form-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
-                    </form>
-                    <div class="contact-info">
-                        <h3 style="color: #1a4d2e; margin-bottom: 1rem;">Contact DCP</h3>
-                        <p><i class="fas fa-envelope" style="color: #b71c1c;"></i> dcpparty254@gmail.com</p>
-                        <p><i class="fas fa-phone" style="color: #b71c1c;"></i> +254 700 000 000</p>
-                        <p><i class="fas fa-map-marker-alt" style="color: #b71c1c;"></i> Nairobi, Kenya</p>
-                        <p style="margin-top: 1rem;"><strong style="color: #1a4d2e;">JUSTICE, UNITY AND PROGRESS</strong></p>
-                        <p style="font-weight: 700; color: #b71c1c;">SKIZA WAKENYA</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <span class="brand-icon">🇰🇪</span>
-                <span>SovSwift | DCP</span>
-            </div>
-            <p class="footer-text"><i class="fas fa-handshake"></i> Justice, Unity and Progress</p>
-            <p class="footer-text" style="font-size: 1.2rem; font-weight: 700; color: #b71c1c;">SKIZA WAKENYA</p>
-            <p class="footer-text" style="font-size: 0.85rem; opacity: 0.8;">Democracy for the Citizens Party – Building a Kenya that serves all its people</p>
-            <div class="footer-legal">
-                <span>&copy; 2026 SovSwift. A project of the DCP.</span>
-                <span> | </span>
-                <span>Built with ❤️ for Kenya.</span>
-            </div>
+        <!-- Create New Post -->
+        <div class="post-form">
+            <h2>Create New Blog Post</h2>
+            <form method="POST" action="/admin/posts">
+                <input type="text" name="title" placeholder="Post Title" required>
+                <textarea name="content" rows="6" placeholder="Write your post content here..." required></textarea>
+                <button type="submit"><i class="fas fa-plus-circle"></i> Publish Post</button>
+            </form>
         </div>
-    </footer>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <!-- Contact Messages -->
+        <div class="message-list">
+            <h2><i class="fas fa-envelope"></i> Contact Messages ({{ messages|length }})</h2>
+            {% if messages %}
+                {% for msg in messages %}
+                    <div class="message-item">
+                        <div>
+                            <strong>{{ msg.name }}</strong> ({{ msg.email }})<br>
+                            <small>{{ msg.created_at[:10] }}</small>
+                            <p>{{ msg.message }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No messages yet.</p>
+            {% endif %}
+        </div>
+
+        <!-- All Blog Posts -->
+        <div class="post-list">
+            <h2><i class="fas fa-newspaper"></i> Published Posts ({{ posts|length }})</h2>
+            {% if posts %}
+                {% for post in posts %}
+                    <div class="post-item">
+                        <div>
+                            <strong>{{ post.title }}</strong><br>
+                            <small>{{ post.created_at[:10] }}</small>
+                            <p>{{ post.content[:100] }}...</p>
+                        </div>
+                        <form method="POST" action="/admin/posts/delete/{{ post.id }}" style="margin:0;">
+                            <button type="submit" class="delete-btn" onclick="return confirm('Delete this post?');"><i class="fas fa-trash"></i> Delete</button>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No posts yet.</p>
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>
