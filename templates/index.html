@@ -75,7 +75,7 @@
             </div>
         </section>
 
-        <!-- ABOUT Section – Short and sweet -->
+        <!-- ABOUT Section -->
         <section id="about" class="section fade-in">
             <div class="container narrow">
                 <h2>About SovSwift</h2>
@@ -87,7 +87,7 @@
             </div>
         </section>
 
-        <!-- POLICY Section – Minimal -->
+        <!-- POLICY Section -->
         <section id="policy" class="section fade-in">
             <div class="container narrow">
                 <h2>Our Policy</h2>
@@ -102,13 +102,12 @@
                     </div>
                 </div>
                 <div id="blog-posts" class="blog-grid">
-                    <!-- Posts loaded dynamically -->
                     <p style="text-align:center; color:var(--text-secondary);">No news yet. Check back soon!</p>
                 </div>
             </div>
         </section>
 
-        <!-- PILLARS Section – Clean cards, centered heading -->
+        <!-- PILLARS Section -->
         <section id="pillars" class="section fade-in">
             <div class="container">
                 <h2 style="text-align:center;">Our Pillars</h2>
@@ -143,11 +142,10 @@
             </div>
         </section>
 
-        <!-- CONTACT Section – Compact -->
+        <!-- CONTACT Section -->
         <section id="contact" class="section fade-in" style="padding-top: 0.5rem; padding-bottom: 2rem;">
             <div class="container">
                 <div class="contact-grid">
-                    <!-- Left Column -->
                     <div class="contact-left">
                         <h2 style="text-align: left; margin-bottom: 0.3rem; font-size: 1.8rem;">Join Our DCP Team</h2>
                         <p class="contact-subtitle" style="font-size: 0.95rem; margin-bottom: 1rem;">Support DCP's vision for a sovereign Kenya.</p>
@@ -161,8 +159,6 @@
                             <span style="font-size: 1rem;">SKIZA WAKENYA</span>
                         </div>
                     </div>
-
-                    <!-- Right Column: Form -->
                     <div class="contact-right" style="padding: 1.25rem;">
                         <form id="contact-form">
                             <div class="form-group" style="margin-bottom: 0.7rem;">
@@ -184,40 +180,35 @@
                 </div>
             </div>
         </section>
-    </main>
-        <!-- WhatsApp Section -->
+
+        <!-- WHATSAPP Section – Two Column Layout -->
         <section id="whatsapp" class="section fade-in" style="padding-top: 0.5rem; padding-bottom: 2rem; background: var(--bg-secondary);">
             <div class="container">
-                <div class="whatsapp-wrapper">
+                <div class="whatsapp-grid">
+                    <!-- Left Column: Clickable WhatsApp Logo -->
                     <div class="whatsapp-left">
-                        <h2 style="text-align: left; font-size: 1.8rem;">Join Our WhatsApp Channel</h2>
-                        <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 1rem;">
-                            Get real-time foreign policy updates, civic education, and DCP news directly on your phone.
-                        </p>
-                        <div class="whatsapp-features">
-                            <p><i class="fas fa-check-circle" style="color: #25D366;"></i> Daily foreign policy briefs</p>
-                            <p><i class="fas fa-check-circle" style="color: #25D366;"></i> Civic education on digital sovereignty</p>
-                            <p><i class="fas fa-check-circle" style="color: #25D366;"></i> Live Q&A with DCP leaders</p>
-                            <p><i class="fas fa-check-circle" style="color: #25D366;"></i> Kenya's 2027 election updates</p>
-                        </div>
-                        <a href="https://whatsapp.com/channel/0029VaXXXXXXXXXXX" target="_blank" class="btn btn-whatsapp">
-                            <i class="fab fa-whatsapp"></i> Join Now
+                        <a href="https://whatsapp.com/channel/0029Vb8Ml0R2phHO4KCzgj3c" target="_blank" class="whatsapp-logo-link" aria-label="Join DCP on WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>Join our Channel</span>
                         </a>
                     </div>
+                    <!-- Right Column: Text Content -->
                     <div class="whatsapp-right">
-                        <div class="whatsapp-card">
-                            <i class="fab fa-whatsapp" style="font-size: 4rem; color: #25D366;"></i>
-                            <h3>WhatsApp Channel</h3>
-                            <p>SKIZA WAKENYA – Kenya listens to its people</p>
-                            <div class="whatsapp-stats">
-                                <span><i class="fas fa-users"></i> Join thousands of Kenyans</span>
-                                <span><i class="fas fa-bullhorn"></i> Free & instant updates</span>
-                            </div>
+                        <h2 style="text-align: left; font-size: 1.6rem; margin-bottom: 0.5rem;">Join Our WhatsApp Channel</h2>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem;">
+                            Get real-time Kenya's foreign policy updates directly on your phones.
+                        </p>
+                        <div class="whatsapp-features">
+                            <p><i class="fas fa-check-circle" style="color: #25D366;"></i> Latest geopolitical news and trends</p>
+                            <p><i class="fas fa-check-circle" style="color: #25D366;"></i> Live Q&A sessions with diplomacy experts</p>
+                            <p><i class="fas fa-check-circle" style="color: #25D366;"></i> Public views and civic education</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+    </main>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -233,9 +224,5 @@
     </footer>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <!-- WhatsApp Floating Button -->
-    <a href="https://whatsapp.com/channel/0029VaXXXXXXXXXXX" target="_blank" class="whatsapp-float" aria-label="Join DCP on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>    
 </body>
 </html>
