@@ -660,6 +660,92 @@ h2::after {
 }
 
 /* ============================================
+   WhatsApp Section – Two Column Grid
+   ============================================ */
+.whatsapp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+/* Left Column: Clickable WhatsApp Logo */
+.whatsapp-left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.whatsapp-logo-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #25D366;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+}
+
+.whatsapp-logo-link:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+}
+
+.whatsapp-logo-link i {
+    font-size: 5rem;
+    color: white;
+    margin-bottom: 0.3rem;
+}
+
+.whatsapp-logo-link span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: white;
+}
+
+/* Right Column: Text Content */
+.whatsapp-right h2 {
+    text-align: left !important;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.whatsapp-right h2::after {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.whatsapp-right p {
+    color: var(--text-secondary);
+}
+
+.whatsapp-features {
+    margin-top: 0.5rem;
+}
+
+.whatsapp-features p {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+}
+
+.whatsapp-features i {
+    font-size: 0.95rem;
+    color: #25D366;
+}
+
+/* ============================================
    Footer
    ============================================ */
 footer {
@@ -746,6 +832,32 @@ footer {
     .contact-features p { justify-content: center; }
     .contact-quote { text-align: center; }
     .contact-right { padding: 1rem; }
+
+    /* WhatsApp Responsive */
+    .whatsapp-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    .whatsapp-right h2 {
+        text-align: center !important;
+    }
+    .whatsapp-right h2::after {
+        margin: 0.4rem auto 0;
+    }
+    .whatsapp-features p {
+        justify-content: center;
+    }
+    .whatsapp-logo-link {
+        width: 140px;
+        height: 140px;
+    }
+    .whatsapp-logo-link i {
+        font-size: 3.8rem;
+    }
+    .whatsapp-logo-link span {
+        font-size: 0.75rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -760,185 +872,14 @@ footer {
         padding: 0.4rem 0.6rem;
         font-size: 0.85rem;
     }
-}
-
-/* ============================================
-   WhatsApp Floating Button
-   ============================================ */
-.whatsapp-float {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: #25D366;
-    color: white;
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.2rem;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-    z-index: 1000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-}
-
-.whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
-    color: white;
-}
-
-[data-theme="dark"] .whatsapp-float {
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
-}
-
-@media (max-width: 480px) {
-    .whatsapp-float {
-        width: 48px;
-        height: 48px;
-        font-size: 1.8rem;
-        bottom: 16px;
-        right: 16px;
+    .whatsapp-logo-link {
+        width: 110px;
+        height: 110px;
     }
-}
-/* ============================================
-   WhatsApp Section
-   ============================================ */
-.whatsapp-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.5rem;
-    align-items: center;
-    max-width: 950px;
-    margin: 0 auto;
-}
-
-.whatsapp-left h2 {
-    text-align: left !important;
-    font-size: 1.8rem;
-}
-
-.whatsapp-left h2::after {
-    margin-left: 0;
-    margin-right: auto;
-}
-
-.whatsapp-left p {
-    color: var(--text-secondary);
-}
-
-.whatsapp-features p {
-    margin-bottom: 0.5rem;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.95rem;
-}
-
-.whatsapp-features i {
-    color: #25D366;
-    font-size: 1rem;
-}
-
-.btn-whatsapp {
-    display: inline-block;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    font-weight: 700;
-    text-decoration: none;
-    background: #25D366;
-    color: white;
-    border: 2px solid #25D366;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 0.5rem;
-}
-
-.btn-whatsapp:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-    color: white;
-}
-
-.btn-whatsapp i {
-    margin-right: 0.5rem;
-}
-
-.whatsapp-right {
-    display: flex;
-    justify-content: center;
-}
-
-.whatsapp-card {
-    background: var(--bg-primary);
-    padding: 2rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    text-align: center;
-    width: 100%;
-    max-width: 320px;
-    border: 2px solid #25D366;
-}
-
-.whatsapp-card h3 {
-    color: var(--accent-green);
-    margin: 0.5rem 0;
-}
-
-.whatsapp-card p {
-    color: var(--text-secondary);
-    font-size: 0.95rem;
-}
-
-.whatsapp-stats {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.whatsapp-stats span {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.whatsapp-stats i {
-    color: #25D366;
-}
-
-/* ============================================
-   WhatsApp Responsive
-   ============================================ */
-@media (max-width: 768px) {
-    .whatsapp-wrapper {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        text-align: center;
+    .whatsapp-logo-link i {
+        font-size: 3rem;
     }
-
-    .whatsapp-left h2 {
-        text-align: center !important;
-    }
-
-    .whatsapp-left h2::after {
-        margin: 0.5rem auto 0;
-    }
-
-    .whatsapp-features p {
-        justify-content: center;
-    }
-
-    .btn-whatsapp {
-        display: inline-block;
-    }
-
-    .whatsapp-card {
-        max-width: 100%;
+    .whatsapp-logo-link span {
+        font-size: 0.65rem;
     }
 }
