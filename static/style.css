@@ -644,3 +644,121 @@ footer {
     .btn { padding: 0.6rem 1.5rem; font-size: 0.9rem; }
     .pillars-grid { grid-template-columns: 1fr; }
 }
+/* ============================================
+   Contact Grid – Two Column Layout
+   ============================================ */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-left {
+    padding-top: 0.5rem;
+}
+
+.contact-left h2 {
+    text-align: left !important;
+    margin-bottom: 0.3rem;
+}
+
+.contact-left h2::after {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.contact-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.contact-features p {
+    margin-bottom: 0.6rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.contact-features i {
+    font-size: 1rem;
+    color: var(--accent-green);
+}
+
+.contact-quote {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--bg-secondary);
+}
+
+.contact-quote p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.2rem;
+}
+
+.contact-quote span {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--accent-red);
+}
+
+.contact-right {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.contact-right .form-group:last-of-type {
+    margin-bottom: 0.5rem;
+}
+
+.contact-right .btn {
+    width: 100%;
+}
+
+/* ============================================
+   Responsive: Contact Grid
+   ============================================ */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-left h2 {
+        text-align: center !important;
+    }
+
+    .contact-left h2::after {
+        margin: 0.5rem auto 0;
+    }
+
+    .contact-subtitle {
+        text-align: center;
+    }
+
+    .contact-features p {
+        justify-content: center;
+    }
+
+    .contact-quote {
+        text-align: center;
+    }
+
+    .contact-right {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-right {
+        padding: 1rem;
+    }
+}
