@@ -50,6 +50,38 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // ============================================
+// NAVIGATION: Smooth scrolling for "Home" button
+// Fix: Prevent page reload on Home click
+// ============================================
+document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        // Update active state
+        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+// Also handle the "Home" button in the nav with data-nav attribute
+document.querySelectorAll('[data-nav]').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+// ============================================
 // Countdown to 2027-08-09
 // ============================================
 const targetDate = new Date('2027-08-09T00:00:00').getTime();
@@ -78,7 +110,28 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 // ============================================
-// Active Navigation Link Highlighting
+// Fade-In Animation on Scroll (Intersection Observer)
+// ============================================
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            // Add a staggered delay for a cascading effect
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+            }, index * 100);
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+fadeElements.forEach(el => observer.observe(el));
+
+// ============================================
+// Active Navigation Link Highlighting (on scroll)
 // ============================================
 const sections = document.querySelectorAll('.section');
 const navLinksAll = document.querySelectorAll('.nav-links a');
