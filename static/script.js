@@ -2,6 +2,8 @@
 // Dark/Light Mode Toggle (Navbar)
 // ============================================
 const toggleBtn = document.getElementById('nav-mode-toggle');
+
+// Load saved theme
 const currentTheme = localStorage.getItem('theme') || 'light';
 
 if (currentTheme === 'dark') {
@@ -11,8 +13,11 @@ if (currentTheme === 'dark') {
     toggleBtn.innerHTML = '<i class="fas fa-moon"></i> Mode';
 }
 
-toggleBtn.addEventListener('click', () => {
+// Toggle function
+toggleBtn.addEventListener('click', function(e) {
+    e.preventDefault();
     const theme = document.documentElement.getAttribute('data-theme');
+    
     if (theme === 'dark') {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
