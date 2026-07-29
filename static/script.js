@@ -1,4 +1,11 @@
 // ============================================
+// PREVENT BROWSER SCROLL RESTORATION ON REFRESH
+// ============================================
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+// ============================================
 // Dark/Light Mode Toggle (Navbar)
 // ============================================
 const toggleBtn = document.getElementById('nav-mode-toggle');
